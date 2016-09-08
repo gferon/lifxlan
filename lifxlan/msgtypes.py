@@ -5,7 +5,7 @@
 # Need to look into assert-type frameworks or something, there has to be a tool for that.
 # Also need to make custom errors possibly, though tool may have those.
 
-from message import Message, BROADCAST_MAC, HEADER_SIZE_BYTES, little_endian
+from .message import Message, BROADCAST_MAC, HEADER_SIZE_BYTES, little_endian
 import bitstring
 import sys
 import struct
@@ -337,7 +337,7 @@ class LightSetColor(Message):
 
     def get_payload(self):
         reserved_8 = little_endian(bitstring.pack("8", self.reserved))
-        color = "".join(little_endian(bitstring.pack("16", field)) for field in self.color)
+        color = b''.join(little_endian(bitstring.pack("16", field)) for field in self.color)
         duration = little_endian(bitstring.pack("32", self.duration))
         payload = reserved_8 + color + duration
         return payload

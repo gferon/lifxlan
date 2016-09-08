@@ -18,8 +18,8 @@
 # per device, and also to capture in real time when a service is down (port = 0).
 
 from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_REUSEADDR, SO_BROADCAST, timeout, error
-from msgtypes import *
-from unpack import unpack_lifx_message
+from .msgtypes import *
+from .unpack import unpack_lifx_message
 from time import time, sleep
 from datetime import datetime
 
